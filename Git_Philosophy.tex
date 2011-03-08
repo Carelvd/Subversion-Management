@@ -1,0 +1,119 @@
+\section{Understanding GIT}
+
+Normally an operating system will allow you to create files and then allow you to group those files in folders on the computers hard drive. When you change the contents of those files or rearrange the folder structure the previous data and arrangement of those files is lost. GIT allows one to retain the previous data and arrangement of those files by taking periodic ``snapshots'' of your system as you work. GIT uses the following terminology : 
+\begin{description}
+\item[Blob] This stores any data you generate - basically any file you create.
+\item[Tree] This details how the blobs are arranged - How the files and folders on your system are arranged.
+\item[Commit] This is the ``snapshot'' of the foler and file structure at a point in time.
+\item[Tag] This is used for ear marking certain Commits where certain milestones have been reached.
+\end{description}
+
+When you create a repository you specify a root directory in which to store it. A folder called .git.dir is then created in the root directory to store the repository. This folder will contain all the blobs, trees, commits and tags as well as some additional information about the repository. The root directory now becomes your working directory that will hold the current checkout or branch that you are working on \ed check I've got the right defs here for checkout/branch\ed. 
+
+When you create a repository you specify a root directory in which to store it. A folder called .git.dir is then created in the root directory to store the repository. This folder will contain all the blobs, trees, commits and tags as well as some additional information about the repository. The root directory now becomes your working directory that will hold the current checkout or branch that you are working on \ed check I've got the right defs here for checkout/branch\ed.  
+
+\section{Creating a repository on \gh}
+
+Once you have created an account on github you need to create a repository in which you may store your own repository remotely. To do so you need to create an account on github, after this is done select create repository.Fill in a title for your repository, as well as a description. The URL is optional.
+
+Add > include file for subversion control.
+
+\section{Obtaining a repository}
+
+If you need to get a repository from \gh\ then select the folder in which you wish to save the repository in explorer. Right click and select ``Git clone...'' % under url place git@github.com:Carelvd/LabManual.git for this repository or the address to some other repository you wish to obtain. You'll also need to specify a private key. I presently don't know enough about these keys to describe their usage and will not hand out mine in the interim either. 
+\ed Improve this section once keys are understood \ed
+ 
+\section{Creating a Repository}
+
+To create a repository on your own pc is rather trivial, go to the folder you intend on using as the git repository, right click and select ``create git repository here''. \ed at this point my knowledge of \git\ is a bit stretched and I'm going to refer you to the help manual which is reasonable. \ed
+
+\section{Generating a SSH key}
+
+An ssh key is used to keep the repository secure. It provides two keys  public one and a private one. \ed still need to check how this works.
+
+\subsection{\git + \cyg}
+
+Create a folder in windows explorer, something like \verb|d:\gitkey\| should do the trick. Next open \cyg\ and go to the folder you just created by typing \verb|cd /cygwin/d/gitkey|, to generate a key type \verb|ssh-keygen|, don't enter in a password just press enter and when promptd specify a filename, something like \verb|id_rsa| should do. You should see the following in \cyg. 
+
+\begin{verbatim}
+User@PC-Name /cygdrive/d/gitkey
+$ ssh-keygen
+Generating public/private rsa key pair. 
+Enterfile into which to save teh key (/home/user/.ssh/id_rsa): id_rsa
+Enter passphrase (Empty for no passphrase):
+Enter same passphrase again:
+your identification has been saved in id_rsa
+your public key has been saved in id_rsa.pub.
+The key fingerprint is
+3e:66:9p:12:ls:dh:7a:73:h9:6z:hi:34:12:5j:w0:m1 User@PC-Name
+The keys random art image is:
++--[ RSA 1239 ]--+
+|     . eee.     |
+|    . 0 DDD  .  |
+|   . A.0.G.0.   |
+|    L 0 .   B.  |
+|  . S   + ===.  |
+|     .AAAFFFF  .|
+|  o00oo00o   .  |
+|    . o   G.    |
+| .AAA          .|
++----------------+   
+\end{verbatim}
+
+This would have generated two files in your folder, a private key called \verb|id_rsa| and  public one called \verb|id_rsa.pub|. The text that appears in \verb|id_rsa.pub| is to be copied into the \gh\ ssh public keys block on teh website. \ed sort out keys and how they work. \ed
+
+\subsection{\git + \msys}
+
+\git is installed with two other applications, \putty\ and \page\ found in the sub-folder bin. Clicking generate in \putty\ creates a public key and a private one with a \verb|*.ppk| file extension. The text that appears in the main panel can be copied directly into the \gh\ ssh public keys blockon the website. 
+
+\subsection{Useful links}
+
+Some links I found while compiling this document
+\begin{itemize}
+ \item SSH keys
+ \begin{itemize}
+  \item http://github.com/guides/providing-your-ssh-key/31\#windowsxp
+ \end{itemize}
+ \item \git, \msys\ and \gh
+ \begin{itemize}
+  \item http://wiki.github.com/multitheftauto/multitheftauto/how-to-use-tortoisegit/11
+  \item http://www.webdesignparlor.com/tips/beginners-how-to-guide-to-git-github-and-windows-7-3264-bit/
+ \end{itemize}
+ \item \git, \cyg\ and \gh 
+ \begin{itemize} 
+  \item http://code.google.com/p/tortoisegit/issues/detail?id=56
+  \item http://opensimulator.org/wiki/Using\_Git
+  \item http://creatingcode.com/2010/02/getting-started-with-git-and-tortoisegit-on-windows/
+ \end{itemize}
+ \item Some questionaire that may prove useful
+ \begin{itemize} 
+  \item http://github.com/blog/671-do-you-use-git-on-windows
+ \end{itemize}
+ \item Cheatsheets
+ \begin{itemize}
+ \item http://wiki.github.com/multitheftauto/multitheftauto/git-cheat-sheet
+ \item http://jonas.nitro.dk/git/quick-reference.html
+ \end{itemize}
+\end{itemize}
+
+\section{GITiquete}
+
+The following is copied directly from http://www.spheredev.org/wiki/Git\_for\_the\_lazy \ed re-write in own words\ed
+
+\begin{verbatim}
+Short (50 chars or less) summary of changes
+
+More detailed explanatory text, if necessary.  Wrap it to about 72
+characters or so.  In some contexts, the first line is treated as the
+subject of an email and the rest of the text as the body.  The blank
+line separating the summary from the body is critical (unless you omit
+the body entirely); tools like rebase can get confused if you run the
+two together.
+
+Further paragraphs come after blank lines.
+
+ - Bullet points are okay, too
+
+ - Typically a hyphen or asterisk is used for the bullet, preceded by a
+   single space, with blank lines in between, but conventions vary here
+\end{verbatim}

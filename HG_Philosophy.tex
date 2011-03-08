@@ -1,0 +1,24 @@
+\section{Understanding Hg}
+
+\hg\ has a master repository from which one may create a local copy by cloning. Once cloned, the local copy can be updated by performing a pull. If you've updated anything in the local repository you must commit these changes to th local copy. The local copy then gets pushed to the master repository.
+
+
+\begin{tikzpicture}
+[point/.style={circle,inner sep=-0.5pt,minimum size=1pt,draw,fill=white,font=\tiny\itshape},
+lines/.style={->,shorten <=2pt,shorten >=5pt,>=stealth,semithick,rounded corners}]
+\matrix{
+% First row:
+\node(a){$ a_{n} $}; &\node(b){$a_{n-2}$}; &\node(c){$a_{n-4}$}; &\node(d){\ldots}; &\node(e){$a_{0}$};\\
+%\node(d1){$\div$}; &\node(T1){$\times$}; &\node(M1){-}; &&&\\
+\node(f){$a_{n-1}$}; &\node(g){$a_{n-3}$}; &\node(h){$a_{n-5}$}; &\node(i){\ldots}; &\\
+\node(j){$A_{1}$}; &\node(k){$A_{2}$}; &\node(l){$A_{3}$}; &\node(m){\ldots}; &\\
+\node(n){$B_{1}$}; &\node(o){$B_{2}$}; &\node(p){$B_{3}$}; &&\\
+\node(q){$C_{1}$}; &\node(r){$C_{2}$}; &\node(s){$C_{3}$}; &&\\
+};
+
+\draw [lines,red] ($(j.center)+(.6em,0)$) --  (g.center) to node [point] {$-$} (k.center) to node [point] {$\times$} ($(f.center)+(.6em,0)$) to node [point] {$\div$}  (j.center) --(n.center);
+\draw [lines,blue] ($(f.center)+(.6em,0)$) --  (c.east) to node [point] {$-$} (h.east) to node [point] {$\times$} ($(a.center)+(.6em,0)$) to node [point] {$\div$} ($(f.center)+(0.6em,0)$) -- (k.center);
+\draw [lines,black] (f.center) --  (b.center) to node [point] {$-$} (g.center) to node [point] {$\times$} (a.center) to node [point] {$\div$}  (f.center) --(j.center);
+
+\end{tikzpicture}
+

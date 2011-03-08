@@ -1,0 +1,44 @@
+\section{Installation}
+
+\subsection{\svn}
+
+The directions here are rather straight forward. Obtain tortoise from http://tortoisesvn.net/downloads. After downloading the installer one may simply run it. You do have to reboot before you see any changes to your explorer menus however.
+
+\subsection{\git}
+
+Firstly decide if you'd prefer \msys\ or \cyg\ as the back end. \cyg\ was the way to go historically, but it seems \msys\ is now preferred. I only found this out after installing \cyg\ and therefore describe the \cyg\ steps as far as I went before giving up and installing \msys. If you managed to install and configure \cyg\ please update this document or mail me (Carelvdam@gmail.com). Apparenty one should install either \cyg\ or \msys but not bothas some or other clshes may occur.
+
+\subsubsection{\cyg\ Installation - Incomplete}
+
+Download \cyg\ from http://www.cygwin.com/ and run the setup program. The link is a small icon appearing in the upper right corner of the web page. Run \verb|setup.exe| and while clicking next on each page select the following options : 
+\begin{enumerate}
+\item Choose a Download source : Install from internet
+\item Select Root install Directory : \verb|C:\Cygwin| (or other appropriate directory) and select all users
+\item Local Package Directory : \verb|D:\CygwinPackages|
+\item Select your internet connection : Direct connection
+\item Choose a download site : Use the default or select some other repository
+\item Select packages : Go down to the net category and click the plus then add openssh (The cross should appear in the bin? column not the src? column)
+\item If you want desktop icons click the check boxes and then click finnish
+\end{enumerate}
+
+Proceed to download and install \git\ from http://code.google.com/p/tortoisegit/downloads/list. When installing tortoise select the openssh option for everything else you can happily click next.
+
+\subsubsection{\msys\ Installation}
+
+Download \msys from http://code.google.com/p/msysgit/downloads/list selecting the option with the text "Full installer for official Git 1.7.0.2" under the summary and labels column. Run this installer  making sure to select the following
+\begin{enumerate}
+\item Select components : You may select "Git Bash here" but that feature is covered by tortoise, so I wouldn't.
+\item Adjusting your PATH environment : Run Git from the Windows Command Prompt
+\item Configuring your line ending conversions : Use Windows style line endings
+\end{enumerate}
+
+Proceed to download and install \git\ from http://code.google.com/p/tortoisegit/downloads/list. When installing tortoise select the Plinker/Putty option for everything else you can happily click next. 
+
+\subsubsection{Configuration}
+To configure \git\ right click on a folder in explorer and select Toroisegit>settings. Select General and specify the path of git, in \cyg\ this should be \verb|c:\cygwin\bin|, while in \msys this should be \verb|c:\program files\git\bin|. Click check now to confirm it's correct. Now select Git>Config and enter in your \gh\ details and select Autocrlf, safecrlf and Save as global.
+
+To configure a \git\ repository on your drive right click on the repository folder and select \git >settings. Now select Git>remote and fill in the required details. This creates  reference that \git uses internally to manage you repositories.
+
+\subsection{\hg}
+
+The directions here are rather straight forward. Obtain tortoise from http://tortoisesvn.net/downloads. After downloading the installer one may simply runs it and clicks next until you are done.
